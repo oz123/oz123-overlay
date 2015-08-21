@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+ 
+<repositories version="1.0">
+	<repo priority="50" quality="experimental" status="unofficial">
+		<name>larry</name>
+		<description>Oz Nahum Tiram Private overlay, use with caution</description>
+		<homepage>https://github.com/oz123/gentoo</homepage>
+		<owner>
+			<email>nahumoz@gmail.com</email>
+		</owner>
+		<source type="git">https://github.com/oz123/gentoo.git</source>
+	</repo>
+</repositories>
