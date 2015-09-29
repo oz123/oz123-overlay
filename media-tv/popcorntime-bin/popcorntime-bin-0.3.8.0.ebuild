@@ -31,7 +31,7 @@ S="${WORKDIR}"
 src_install() {
 	exeinto /opt/${PN}
 	doexe Popcorn-Time
-	
+
 	insinto /opt/${PN}
 	doins -r src node_modules icudtl.dat locales LICENSE.txt libffmpegsumo.so nw.pak install package.json
 
