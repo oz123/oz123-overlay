@@ -1,9 +1,10 @@
-# Copyright 1999-2014 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
 EAPI=5
-inherit autotools eutils
+
+inherit eutils
 
 DESCRIPTION="a text-based calendar and scheduling application"
 HOMEPAGE="http://calcurse.org/"
@@ -13,7 +14,7 @@ LICENSE="BSD-2"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
 
-RDEPEND="sys-libs/ncurses"
+RDEPEND="sys-libs/ncurses:*"
 DEPEND="${RDEPEND}"
 
 DOCS=( AUTHORS NEWS README )
