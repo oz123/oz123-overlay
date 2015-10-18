@@ -4,6 +4,8 @@
 
 EAPI=5
 
+inherit eutils
+
 DESCRIPTION="Convenient alternative to dd for writing images to SDCards"
 HOMEPAGE="https://github.com/fhunleth/mmccopy"
 SRC_URI="https://github.com/fhunleth/mmccopy/archive/v${PV}.tar.gz"
@@ -15,3 +17,8 @@ IUSE=""
 
 DEPEND=""
 RDEPEND="${DEPEND}"
+
+src_prepare() {
+
+	./autogen.sh
+}
