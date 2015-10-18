@@ -4,7 +4,7 @@
 
 EAPI=5
 
-inherit eutils
+inherit eutils autotools
 
 DESCRIPTION="Convenient alternative to dd for writing images to SDCards"
 HOMEPAGE="https://github.com/fhunleth/mmccopy"
@@ -19,6 +19,5 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 
 src_prepare() {
-
-	./autogen.sh
+	eautoreconf
 }
