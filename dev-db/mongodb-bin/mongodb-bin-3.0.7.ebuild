@@ -25,7 +25,24 @@ RDEPEND=""
 S="${WORKDIR}"
 
 src_install() {
-	insinto /usr/local/
-	doins -r mongodb-linux-x86_64-3.0.7/bin
+	exeinto /usr/local/bin/
+	doexe mongodb-linux-x86_64-3.0.7/bin/bsondump
+	doexe mongodb-linux-x86_64-3.0.7/bin/mongo{,d,dump,export,files,import,oplog,perf,restore,s,stat,top}
+	newinitd "${FILESDIR}/${PN}.initd-r2" ${PN}
+	newconfd "${FILESDIR}/${PN}.confd-r2" ${PN}
+	newinitd "${FILESDIR}/${PN/db/s}.initd-r2" ${PN/db/s}
+	newconfd "${FILESDIR}/${PN/db/s}.confd-r2" ${PN/db/s}
+
+	insinto /etc
+	newins "${FILESDIR}/${PN}.conf-r3" ${PN}.conf
+	newins "${FILESDIR}/${PN/db/s}.conf-r2" ${PN/db/s}.conf
+	insinto /etc/logrotate.d/
+	newins "${FILESDIR}/${PN}.logrotate" ${PN}
 }
 
+pkg_postinst() {
+	elog "This ebuild does not replace MongoDB build from source."
+	elog "It can co-exist with other mongodb installations you have."
+	elog "The default ports of the server are unchange though, so "
+	elog "you can have both running! Check all configuration files!"
+}
