@@ -1,4 +1,4 @@
-# Copyright 1999-2010 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -34,5 +34,5 @@ src_install() {
 		doins -r Updater
 	fi
 	make_wrapper "telegram" "${INSTALL_DIR}/Telegram"
-	make_desktop_entry "telegram" "Telegram" "telegram" "Messenger"
+	make_desktop_entry "telegram" "Telegram" "telegram" "X-Messenger"
 }
