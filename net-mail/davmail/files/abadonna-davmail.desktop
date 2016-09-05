@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=DavMail
+GenericName=DavMail
+Comment=DavMail Exchange Gateway
+Exec=/opt/davmail/davmail.sh
+Icon=/usr/share/pixmaps/davmail.png
+NoDisplay=false
+Path[$e]=/opt/davmail
+Terminal=false
+Type=Application
+Categories=Network;Games;
+Version=1.0
