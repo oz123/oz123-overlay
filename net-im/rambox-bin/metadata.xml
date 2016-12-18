@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>oz.tiram@gmail.com</email>
+    <name>Oz Tiram</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <longdescription lang="en">
+    Rambox is a desktop application for multiple messaging services such as freenode, whatsapp slack and more.
+  </longdescription>
+</pkgmetadata>
