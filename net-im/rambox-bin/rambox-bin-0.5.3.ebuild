@@ -39,8 +39,8 @@ src_install() {
 	done
 	doins -r opt/Rambox/*
 	dosym /opt/rambox-bin/rambox /opt/rambox-bin/rambox-bin
-
 	fperms +x /opt/rambox-bin/rambox
+
 	make_desktop_entry rambox rambox-bin /usr/share/icons/hicolor/16x16/apps/rambox.png
 }
 
