@@ -34,7 +34,7 @@ src_install() {
 	fperms +x /opt/forticlient-sslvpn/64bit/helper/setup.linux.sh
 	fperms +x /opt/forticlient-sslvpn/64bit/helper/waitppp.sh
 
-    newmenu usr/share/applications/${PN}.desktop ${PN}.desktop
+	newmenu usr/share/applications/${PN}.desktop ${PN}.desktop
 
 	elog "You need to accept the EULA"
 	elog "Run /opt/forticlient-sslvpn/64bit/helper/setup.linux.sh "
