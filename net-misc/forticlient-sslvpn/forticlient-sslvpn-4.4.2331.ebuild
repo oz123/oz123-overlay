@@ -11,6 +11,7 @@ HOMEPAGE="fortinet"
 SRC_URI="https://hadler.me/files/${PN}_${PV}-1_amd64.deb"
 
 LICENSE="fortinet"
+ACCEPT_LICENSE="fortinet"
 SLOT="0"
 KEYWORDS="~amd64"
 IUSE=""
