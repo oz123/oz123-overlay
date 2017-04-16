@@ -1,4 +1,4 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=6
@@ -15,9 +15,6 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 DEPEND="dev-python/setuptools[${PYTHON_USEDEP}]"
-#PATCHES=(
-#	"${FILESDIR}/${PN}-1.7.3-dont-check-changelog.patch"
-#)
 
 DOCS=(README.md ChangeLog)
 
@@ -25,10 +22,10 @@ S="${WORKDIR}/${PN}-release-${PV}"
 
 src_unpack() {
 	unpack ${A}
-    cd "${S}"
+	cd "${S}"
 	mv icdiff icdiff.py
-	 
 }
+
 python_test() {
 	./test.sh "${EPYTHON%.*}" || die "Tests failed"
 }
