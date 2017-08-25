@@ -12,6 +12,7 @@ REV="2479"
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
 ARCH=`uname -m`
+KERNEL=$(uname -s |  tr '[:upper:]' '[:lower:]')
 
 URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86-${PV}-${REV}.tgz"
 URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
@@ -44,7 +45,7 @@ src_install () {
 	dodir "${TARGETDIR}"
 	insinto "${TARGETDIR}"/
 
-	doins -r $"{S}"/"${MY_PN}"-linux-"${ARCH}"-"${PV}"-"${REV}"/*  || die "Install failed!"
+	doins -r "${S}"/"${MY_PN}"-"${KERNEL}"-"${ARCH}"-"${PV}"-"${REV}"/* || die "Install failed!"
 
 	fowners root:users -R "${TARGETDIR}" || die "Could not change ownership of /opt/davmail directory."
 
