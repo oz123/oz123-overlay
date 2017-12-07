@@ -4,14 +4,14 @@
 
 EAPI=5
 
-inherit user
+inherit user linux-info
 
 DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
-REV="2438"
+REV="2479"
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
-ARCH=`uname -m`
+KERNEL="linux"
 
 URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86-${PV}-${REV}.tgz"
 URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
@@ -19,6 +19,10 @@ URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
 SRC_URI="
 	amd64? ( "${URL_64}" )
 	x86? ( "${URL_32}" )
+"
+ARCH="
+	amd64? ( "x86_64" )
+	x86? ( "x86" )
 "
 
 LICENSE="GPL-2"
@@ -44,19 +48,16 @@ src_install () {
 	dodir "${TARGETDIR}"
 	insinto "${TARGETDIR}"/
 
-	doins -r $"{S}"/"${MY_PN}"-linux-"${ARCH}"-"${PV}"-"${REV}"/*  || die "Install failed!"
+	doins -r "${S}"/"${MY_PN}"-"${KERNEL}"-"${ARCH}"-"${PV}"-"${REV}"/* || die "Install failed!"
 
 	fowners root:users -R "${TARGETDIR}" || die "Could not change ownership of /opt/davmail directory."
 
 	insinto /usr/share/pixmaps
-	#doins "${FILESDIR}"/davmail.png || die "Could not copy davmail.png"
 
 	return
 }
 
 pkg_postinst() {
-	#xdg-desktop-menu install "${FILESDIR}"/abadonna-davmail.desktop || die "Could not register a menu item"
-
 	chmod 755 /opt/davmail/davmail.sh || die "Could not set file permissions on davmail.sh file"
 
 	return

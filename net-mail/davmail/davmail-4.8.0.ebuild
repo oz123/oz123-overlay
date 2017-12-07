@@ -4,15 +4,14 @@
 
 EAPI=5
 
-inherit user
+inherit user linux-info
 
 DESCRIPTION="DavMail POP/IMAP/SMTP/Caldav/Carddav/LDAP Exchange Gateway"
 HOMEPAGE="http://davmail.sourceforge.net/"
 REV="2479"
 MY_PN="${PN}"
 MY_P="${MY_PN}-${PV}"
-ARCH=`uname -m`
-KERNEL=$(uname -s |  tr '[:upper:]' '[:lower:]')
+KERNEL="linux"
 
 URL_32="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86-${PV}-${REV}.tgz"
 URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
@@ -20,6 +19,10 @@ URL_64="mirror://sourceforge/${MY_PN}/${MY_PN}-linux-x86_64-${PV}-${REV}.tgz"
 SRC_URI="
 	amd64? ( "${URL_64}" )
 	x86? ( "${URL_32}" )
+"
+ARCH="
+	amd64? ( "x86_64" )
+	x86? ( "x86" )
 "
 
 LICENSE="GPL-2"
