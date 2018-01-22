@@ -22,7 +22,9 @@ IUSE=""
 RUBY_PATCHES=(
 	${P}-raise-correct-errors.patch
     ${P}-fix-common.path
-	${P}-fix-download_tests.patch
+	${P}-fix-download_test.patch
+	${P}-fix-download_test_2.patch
+	${P}-fix-download_test_3.patch
 	${P}-fix-upload_tests.patch 
 	${P}-raise-correct-errors-net-ssh-4.0-compat.patch
 	)
