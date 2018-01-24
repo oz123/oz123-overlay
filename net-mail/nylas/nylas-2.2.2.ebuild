@@ -30,9 +30,9 @@ src_unpack() {
 }
 
 src_install() {
-	insinto /
-	local size
+	insinto /usr/
 	doins -r usr/*
+	fperms +x /usr/bin/nylas-mail
 }
 
 pkg_preinst() {
