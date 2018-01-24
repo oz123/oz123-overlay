@@ -1,6 +1,5 @@
 # Copyright 1999-2018 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=6
 
@@ -32,7 +31,6 @@ src_unpack() {
 
 src_install() {
 	make_wrapper ${PN} ./${PN} /opt/${PN} .
-	#newmenu usr/share/applications/Rambox.desktop rambox-bin.desktop
 	insinto /opt/${PN}
 	local size
 	for size in 16 32 48 64 128 256 512; do
@@ -44,7 +42,7 @@ src_install() {
 	dosym /opt/rambox-bin/rambox /opt/rambox-bin/rambox-bin
 	fperms +x /opt/rambox-bin/rambox
 
-	make_desktop_entry rambox rambox-bin /usr/share/icons/hicolor/16x16/apps/rambox.png
+	make_desktop_entry rambox-bin rambox "/usr/share/icons/hicolor/16x16/apps/rambox.png"
 }
 
 pkg_preinst() {
