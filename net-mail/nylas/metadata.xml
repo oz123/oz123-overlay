@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+  <maintainer type="person">
+    <email>oz.tiram@gmail.com</email>
+    <name>Oz Tiram</name>
+    <description>Proxied maintainer</description>
+  </maintainer>
+  <longdescription lang="en">
+  The best email app for people and teams at work
+  </longdescription>
+</pkgmetadata>
