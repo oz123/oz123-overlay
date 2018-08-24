@@ -16,16 +16,18 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="mongodb mysql postgres +sqlite test"
 
-DEPEND="
+CDEPEND="
 	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.3.0[${PYTHON_USEDEP}]
+	"
+
+DEPEND="
+	${CDEPEND}
 	test? ( dev-python/pexpect[${PYTHON_USEDEP}] )
 	"
 
 RDEPEND="
-	${DEPEND}
-	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
-	>=dev-python/colorama-0.3.0[${PYTHON_USEDEP}]
+	${CDEPEND}
 	mongodb? ( dev-python/pymongo[${PYTHON_USEDEP}] )
 	mysql? ( dev-python/pymysql[${PYTHON_USEDEP}] )
 	postgres? ( dev-python/psycopg[${PYTHON_USEDEP}] )
