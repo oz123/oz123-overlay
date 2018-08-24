@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_5 python3_6 )
 PYTHON_REQ_USE="sqlite?"
 inherit distutils-r1
 
-DESCRIPTION="A lightweight password manager with multiple database backends"
+DESCRIPTION="A lightweight password-manager with multiple database backends"
 HOMEPAGE="https://pwman3.github.io"
 SRC_URI="https://github.com/pwman3/pwman3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
