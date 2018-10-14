@@ -8,9 +8,8 @@ inherit eutils unpacker gnome2-utils xdg
 DESCRIPTION="Messaging and emailing app that combines common web apps into one."
 HOMEPAGE="http://rambox.pro"
 
-DEB_NAME="Rambox-${PV}-linux-amd64.deb"
-SRC_URI="
-	amd64? ( https://github.com/ramboxapp/community-edition/releases/download/0.6.1/Rambox-0.6.1-linux-amd64.deb )"
+DEB_NAME="Rambox_${PV}-linux-amd64.deb"
+SRC_URI="amd64? ( https://github.com/ramboxapp/community-edition/releases/download/${PV}/Rambox-${PV}-linux-amd64.deb )"
 
 LICENSE="GPL-3"
 SLOT="0"
@@ -39,7 +38,7 @@ src_install() {
 	done
 	doins -r opt/Rambox/*
 	dosym opt/rambox-bin/rambox /opt/rambox-bin/rambox-bin
-	fperms +x /opt/rambox-bin/rambox
+	fperms +x opt/rambox-bin/rambox
 
 	make_desktop_entry rambox-bin rambox "/usr/share/icons/hicolor/16x16/apps/rambox.png"
 }
