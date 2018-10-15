@@ -23,18 +23,11 @@ RDEPEND="
 
 DEPEND=""
 
-S=${WORKDIR}
+S="${WORKDIR}"
 
 src_unpack() {
-	cd ${S}
-	unpack_deb ${DEB_NAME}
-	#cp -v /usr/portage/distfiles/${DEB_NAME} .
-	#echo ${A}
-	#pwd
-	#ar x ${DEB_NAME}
-	#pwd
-	#ls -ll
-	#unpack data.tar.xz
+	cd "${S}"
+	unpack_deb "${DEB_NAME}"
 }
 
 src_install() {
