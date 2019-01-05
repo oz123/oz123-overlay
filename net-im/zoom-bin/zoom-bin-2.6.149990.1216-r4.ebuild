@@ -47,9 +47,10 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}
 
 src_install() {
-	make_wrapper "${PN}" /opt/zoom-bin/zoom/zoom /opt/zoom-bin/zoom /opt/zoom-bin/zoom
-	mkdir -pv "${D}/opt/zoom-bin"
+	make_wrapper "${PN}" /opt/zoom/zoom /opt/zoom /opt/zoom
 	newicon -s 96 "${FILESDIR}/Zoom.png" zoom.png
+	insinto "/opt/"
+	doins -r "${S}/"*
+	fperms +x /opt/zoom/zoom
 	make_desktop_entry zoom-bin zoom-bin "/usr/share/icons/hicolor/96x96/apps/zoom.png"
-	cp -Rp "${S}/"* "${D}/opt/zoom-bin/"
 }
