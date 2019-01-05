@@ -11,8 +11,7 @@ PATCHSET_VERSION="3.7.0"
 
 DESCRIPTION="An interpreted, interactive, object-oriented programming language"
 HOMEPAGE="https://www.python.org/"
-SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz
-	https://dev.gentoo.org/~floppym/python/python-gentoo-patches-${PATCHSET_VERSION}.tar.xz"
+SRC_URI="https://www.python.org/ftp/python/${PV}/${MY_P}.tar.xz"
 
 LICENSE="PSF-2"
 SLOT="3.7/3.7m"
@@ -65,7 +64,7 @@ src_prepare() {
 	rm -fr Modules/zlib
 
 	local PATCHES=(
-		"${WORKDIR}/patches"
+		"${FILESDIR}/patches-3.7.2"
 	)
 
 	default
