@@ -8,6 +8,7 @@ inherit unpacker
 MY_PN=zoom
 
 DESCRIPTION="Video conferencing and web conferencing service"
+HOMEPAGE="https://zoom.us"
 BASE_SERVER_URI="https://zoom.us"
 
 SRC_URI="
@@ -15,9 +16,9 @@ SRC_URI="
 	x86? ( ${BASE_SERVER_URI}/client/${PV}/${MY_PN}_i686.tar.xz -> ${P}_i686.tar.xz )
 "
 
-LICENSE="ZOOM"
+LICENSE="zoom"
 SLOT="0"
-KEYWORDS="~x86 ~amd64"
+KEYWORDS="~amd64 ~x86"
 
 RESTRICT="mirror"
 
@@ -47,6 +48,6 @@ RDEPEND="${DEPEND}
 S=${WORKDIR}
 
 src_install() {
-	mkdir -pv ${D}/opt/zoom-bin
+	mkdir -pv "${D}/opt/zoom-bin"
 	cp -Rp "${S}/"* "${D}/opt/zoom-bin/"
 }
