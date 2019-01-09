@@ -27,12 +27,10 @@ DEPEND=""
 RDEPEND="${DEPEND}
 	pulseaudio? ( media-sound/pulseaudio )
 	gstreamer? ( media-libs/gst-plugins-base )
-	dev-db/sqlite
 	dev-db/unixODBC
 	dev-libs/glib
 	dev-libs/nss
 	dev-libs/libxslt
-	dev-qt/qtmultimedia
 	media-libs/fontconfig
 	media-libs/gstreamer:0.10
 	media-libs/gst-plugins-base:0.10
@@ -41,7 +39,7 @@ RDEPEND="${DEPEND}
 	x11-libs/libXcomposite
 	x11-libs/libXi
 	x11-libs/libXrender
-	dev-qt/qtsvg"
+	"
 
 S=${WORKDIR}
 
