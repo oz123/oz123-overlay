@@ -34,7 +34,7 @@ RDEPEND="
 	media-libs/libvorbis
 	media-libs/libogg
 	media-libs/openal
-	media-libs/glew
+	>=media-libs/glew-2.1
 	>=sys-libs/zlib-1.2
 	x11-libs/libXcursor
 	x11-libs/libXext
