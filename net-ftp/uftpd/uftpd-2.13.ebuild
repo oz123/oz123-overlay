@@ -1,9 +1,9 @@
-# Copyright 1999-2017 Gentoo Foundation
+# Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI=6
+EAPI=7
 
-DESCRIPTION="The no nonsense TFTP/FTP server."
+DESCRIPTION="The no nonsense TFTP/FTP server"
 HOMEPAGE="https://github.com/troglobit/uftpd"
 SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz"
 
@@ -12,8 +12,11 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-libs/libite-2.0.0
-	>=dev-libs/libuev-2.1.0
-	!!net-misc/uftp"
+DEPEND="
+	>=dev-libs/libite-1.5
+	>=dev-libs/libuev-2.2"
 
-RDEPEND="${DEPEND}"
+RDEPEND="
+	${DEPEND}
+	!net-misc/uftp
+	!net-ftp/atftp"
