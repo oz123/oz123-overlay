@@ -8,6 +8,6 @@
 		<owner>
 			<email>nahumoz@gmail.com</email>
 		</owner>
-		<source type="git">https://github.com/oz123/gentoo.git</source>
+		<source type="git">https://github.com/oz123/overlay-gentoo.git</source>
 	</repo>
 </repositories>
