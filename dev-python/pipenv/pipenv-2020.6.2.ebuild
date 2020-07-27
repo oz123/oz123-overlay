@@ -12,11 +12,13 @@ MY_PV=${PV/_beta/b}
 DESCRIPTION="Python Development Workflow for Humans"
 HOMEPAGE="https://github.com/pypa/pipenv https://pypi.org/project/pipenv/"
 SRC_URI="https://github.com/pypa/pipenv/archive/v${MY_PV}.tar.gz -> ${P}.tar.gz"
+S="${WORKDIR}"/${PN}-${MY_PV}
 
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
 IUSE="test"
+RESTRICT="!test? ( test )"
 
 RDEPEND="
 	dev-python/certifi[${PYTHON_USEDEP}]
@@ -25,7 +27,8 @@ RDEPEND="
 	>=dev-python/virtualenv-clone-0.2.5[${PYTHON_USEDEP}]
 	"
 
-DEPEND="test? (
+BDEPEND="
+	test? (
 		${RDEPEND}
 		dev-python/flaky[${PYTHON_USEDEP}]
 		dev-python/mock[${PYTHON_USEDEP}]
@@ -35,22 +38,12 @@ DEPEND="test? (
 		dev-python/pytz[${PYTHON_USEDEP}]
 	)"
 
-RESTRICT="!test? ( test )"
-
-S="${WORKDIR}"/${PN}-${MY_PV}
+distutils-r1_src_prepare() {
+	# remove vendored version of PyYAML that is backported to Python2
+	# this should be removed when upstream removes support for Python2
+	rm -vR "${S}/${PN}/patched/yaml2/" || die
+}
 
 python_test() {
 	pytest -m "not cli and not needs_internet" -vv tests/unit || die
-}
-
-src_prepare() {
-	# remove vendored version of PyYAML that is backported to Python2
-	# this should be removed when upstream removes support for Python2
-	rm -vR "${S}/${PN}/patched/yaml2/"
-	eapply_user
-}
-
-python_install() {
-	distutils-r1_python_install
-	python_optimize
 }
