@@ -14,9 +14,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="static-libs"
 
-#src_configure() {
-#	append-ldflags -Wl,-soname,libjanet.so.1.11
-#}
+src_configure() {
+	append-ldflags -Wl,-soname,libjanet.so.1.11
+	append-cflags -fPIC
+}
 
 src_compile() {
 	# janet_build is the git hash of the commit related to the
@@ -36,7 +37,7 @@ src_install() {
 	doheader "src/conf/janetconf.h"
 
 	dolib.so "build/libjanet.so"
-	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.1.9
+	dosym libjanet.so /usr/$(get_libdir)/libjanet.so.1.11
 
 	if use static-libs; then
 		dolib.a "build/libjanet.a"
