@@ -12,7 +12,7 @@ SRC_URI="https://www.kernel.org/pub/software/network/tftp/${PN}/${P}.tar.xz"
 LICENSE="BSD-4"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="ipv6 readline selinux tcpd client daemon"
+IUSE="ipv6 readline selinux tcpd +client +daemon"
 
 CDEPEND="
 	readline? ( sys-libs/readline:0= )
@@ -25,10 +25,12 @@ RDEPEND="${CDEPEND}
 	selinux? ( sec-policy/selinux-tftp )
 "
 
-src_prepare() {
-	epatch "${FILESDIR}"/tftp-hpa-5.2-gcc-10.patch
-	epatch_user
+PATCHES=(
+	"${FILESDIR}"/tftp-hpa-5.2-gcc-10.patch
+)
 
+src_prepare() {
+	eapply_user
 	sed -i "/^AR/s:ar:$(tc-getAR):" MCONFIG.in || die
 }
 
@@ -52,10 +54,16 @@ src_compile() {
 }
 
 src_install() {
-	emake INSTALLROOT="${D}" install
 	dodoc README* CHANGES tftpd/sample.rules
+	emake INSTALLROOT="${D}" -C lib install
+	emake INSTALLROOT="${D}" -C common install
 
+	if use client; then
+		emake INSTALLROOT="${D}" -C tftp install
+	fi
 	if use daemon; then
+
+		emake INSTALLROOT="${D}" install
 		# iputils installs this
 		rm "${ED}"/usr/share/man/man8/tftpd.8 || die
 
