@@ -9,7 +9,7 @@ SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 

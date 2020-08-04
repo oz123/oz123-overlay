@@ -1,0 +1,10 @@
+diff --git a/tests/tftp.sh b/tests/tftp.sh
+index 3c24b77..1d39c90 100755
+--- a/tests/tftp.sh
++++ b/tests/tftp.sh
+@@ -1,4 +1,4 @@
+ #!/bin/sh
+ set -x
+ cd /tmp
+-tftp -4 127.0.0.1 6969 -m binary -c get testfile.txt
++busybox tftp 127.0.0.1 6969 -m binary -c get testfile.txt
