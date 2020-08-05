@@ -32,7 +32,8 @@ src_compile() {
 src_install() {
 	dobin "build/janet"
 	dobin "jpm"
-
+	dodir "usr/include/janet"
+	insinto "usr/include/janet"
 	doheader "src/include/janet.h"
 	doheader "src/conf/janetconf.h"
 
