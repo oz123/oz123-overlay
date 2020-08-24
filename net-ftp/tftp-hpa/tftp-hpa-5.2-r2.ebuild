@@ -1,7 +1,7 @@
 # Copyright 1999-2020 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
-EAPI="6"
+EAPI="7"
 
 inherit systemd eutils toolchain-funcs
 
@@ -11,19 +11,19 @@ SRC_URI="https://www.kernel.org/pub/software/network/tftp/${PN}/${P}.tar.xz"
 
 LICENSE="BSD-4"
 SLOT="0"
-KEYWORDS="~amd64"
-IUSE="ipv6 readline selinux tcpd +client +daemon"
+KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~hppa ~ia64 ~mips ~ppc ~ppc64 ~s390 ~sparc ~x86 ~ppc-macos"
+IUSE="ipv6 readline selinux tcpd +client +server"
 
 CDEPEND="
 	readline? ( sys-libs/readline:0= )
 	tcpd? ( sys-apps/tcp-wrappers )
-	!net-ftp/atftp
-	!net-ftp/netkit-tftp"
+	!net-ftp/atftp"
+
 DEPEND="${CDEPEND}
 	app-arch/xz-utils"
+
 RDEPEND="${CDEPEND}
-	selinux? ( sec-policy/selinux-tftp )
-"
+	selinux? ( sec-policy/selinux-tftp )"
 
 PATCHES=(
 	"${FILESDIR}"/tftp-hpa-5.2-gcc-10.patch
@@ -48,7 +48,7 @@ src_compile() {
 	if use client; then
 		emake -C tftp
 	fi
-	if use daemon; then
+	if use server; then
 		emake -C tftpd
 	fi
 }
@@ -59,11 +59,11 @@ src_install() {
 	emake INSTALLROOT="${D}" -C common install
 
 	if use client; then
-		emake INSTALLROOT="${D}" -C tftp install
+		emake INSTALLROOT="${D}" SUB="lib common tftp" tftp install
 	fi
-	if use daemon; then
+	if use server; then
 
-		emake INSTALLROOT="${D}" install
+		emake INSTALLROOT="${D}" SUB="lib common tftpd" tftpd install
 		# iputils installs this
 		rm "${ED}"/usr/share/man/man8/tftpd.8 || die
 
