@@ -9,7 +9,7 @@ SRC_URI="https://github.com/troglobit/${PN}/releases/download/v${PV}/${P}.tar.xz
 
 LICENSE="MIT"
 SLOT="0"
-KEYWORDS="~amd64 ~x86"
+KEYWORDS="~amd64"
 IUSE="test"
 RESTRICT="!test? ( test )"
 
@@ -17,19 +17,16 @@ RDEPEND="
 	>=dev-libs/libite-1.5
 	>=dev-libs/libuev-2.2"
 
-PATCHES=(
-       "${FILESDIR}/0001-patch-test.patch"
-)
-
 DEPEND="
 	${RDEPEND}
 	!net-misc/uftp
 	!net-ftp/atftp
-	!net-ftp/tftp-hpa
+	!=net-ftp/tftp-hpa-5.2-r1
+	!>=net-ftp/tftp-hpa-5.2-r2[server]
 	test? (
 		net-ftp/ftp
 		net-ftp/tnftp
-		sys-apps/busybox
+		>=net-ftp/tftp-hpa-5.2-r2[client]
 	)"
 
 src_test() {
