@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/World/${PN}/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3"
 SLOT="0"
 KEYWORDS="~amd64 ~x86 ~amd64-linux ~x86-linux"
-IUSE="nautilus test"
+IUSE="test"
 RESTRICT="!test? ( test )"
 
 COMMON_DEPEND="
