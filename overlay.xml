@@ -4,10 +4,10 @@
 	<repo priority="50" quality="experimental" status="unofficial">
 		<name>larry</name>
 		<description>Oz Nahum Tiram Private overlay, use with caution</description>
-		<homepage>https://github.com/oz123/gentoo</homepage>
+		<homepage>https://github.com/oz123/oz123-overlay</homepage>
 		<owner>
 			<email>nahumoz@gmail.com</email>
 		</owner>
-		<source type="git">https://github.com/oz123/overlay-gentoo.git</source>
+		<source type="git">https://github.com/oz123/oz123-overlay.git</source>
 	</repo>
 </repositories>
