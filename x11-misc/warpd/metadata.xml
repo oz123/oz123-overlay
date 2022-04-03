@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>oz.tiram@gmail.com</email>
+		<name>Oz N Tiram</name>
+	</maintainer>
+	<longdescription lang="en">
+		A small X program which provides a modal keyboard driven
+		interface for cursor manipulation. The program was originally
+		inspired by the mousekeys feature of Kaleidoscope,
+		the firmware for the Keyboardio.
+	</longdescription>
+	<upstream>
+	<remote-id type="github">rvaiya/warpd</remote-id>
+</upstream>
+</pkgmetadata>
