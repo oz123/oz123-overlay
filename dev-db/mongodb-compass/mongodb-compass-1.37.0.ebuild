@@ -2,8 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
-
-inherit desktop gnome2-utils wrapper unpacker xdg
+inherit desktop wrapper unpacker xdg
 
 DESCRIPTION="The GUI for MongoDB."
 HOMEPAGE="https://github.com/mongodb-js/compass"
@@ -39,15 +38,12 @@ src_install() {
 
 pkg_preinst() {
 	xdg_pkg_preinst
-	gnome2_icon_savelist
 }
 
 pkg_postinst() {
 	xdg_pkg_postinst
-	gnome2_icon_cache_update
 }
 
 pkg_postrm() {
 	xdg_pkg_postrm
-	gnome2_icon_cache_update
 }
