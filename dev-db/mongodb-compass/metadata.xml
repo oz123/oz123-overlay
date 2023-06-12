@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
-<maintainer>
+<maintainer type="project" proxied="proxy">
 	<email>oz.tiram@gmail.com</email>
 	<name>Oz Tiram</name>
 </maintainer>
 <longdescription lang="en">
+	Easily explore and manipulate your database with Compass,
+	the GUI for MongoDB. Intuitive and flexible,
+	Compass provides detailed schema visualizations,
+	real-time performance metrics, sophisticated querying abilities,
+	and much more.
 </longdescription>
+<upstream>
+<remote-id type="github">mongodb-js/compass</remote-id>
+</upstream>
 </pkgmetadata>
