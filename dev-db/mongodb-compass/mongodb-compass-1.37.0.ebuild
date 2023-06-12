@@ -3,7 +3,7 @@
 
 EAPI=7
 
-inherit wrapper unpacker xdg desktop
+inherit wrapper unpacker xdg desktop gnome2-utils
 
 DESCRIPTION="The GUI for MongoDB."
 HOMEPAGE="https://github.com/mongodb-js/compass"
