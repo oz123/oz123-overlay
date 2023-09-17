@@ -11,7 +11,7 @@
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">pypa/pyproject-hooks</remote-id>
-		<remote-id type="pypi">pep517</aremote-id>
+		<remote-id type="github">tox-dev/pipdeptree</remote-id>
+		<remote-id type="pypi">pipdeptree</remote-id>
 	</upstream>
 </pkgmetadata>
