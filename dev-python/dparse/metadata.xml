@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">pyupio/dparse</remote-id>
-		<remote-id type="pypi">dparse</aremote-id>
+		<remote-id type="pypi">dparse</remote-id>
 	</upstream>
 </pkgmetadata>
