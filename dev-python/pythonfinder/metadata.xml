@@ -12,6 +12,6 @@
 	<stabilize-allarches/>
 	<upstream>
 		<remote-id type="github">sarugaku/pythonfinder</remote-id>
-		<remote-id type="pypi">pythonfinder</aremote-id>
+		<remote-id type="pypi">pythonfinder</remote-id>
 	</upstream>
 </pkgmetadata>
