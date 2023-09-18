@@ -24,6 +24,7 @@ PATCHES=(
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports.patch"
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports-utils.patch"
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports-pythonfinder.patch"
+	"${FILESDIR}/pipenv-2023.7.11-fix-monkeypatch-pythonfinder.patch"
 )
 
 RDEPEND="
@@ -71,7 +72,7 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click_didyoumean dotenv dparse markupsafe \
-					 pexpect pep517 pipdeptree ptyprocess pyparsing requests urllib3 \
+					 pexpect pep517 pipdeptree ptyprocess pythonfinder pyparsing requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
