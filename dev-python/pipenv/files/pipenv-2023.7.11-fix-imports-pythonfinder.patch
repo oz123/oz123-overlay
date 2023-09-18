@@ -1,4 +1,4 @@
-From 758570e88387fecd0b41700d27e92dfe05756f19 Mon Sep 17 00:00:00 2001
+From f2336a2ad308cfcb02bf62ff49d7527b2f6d06bf Mon Sep 17 00:00:00 2001
 From: Oz Tiram <oz.tiram@gmail.com>
 Date: Mon, 18 Sep 2023 12:05:59 +0200
 Subject: [PATCH] pipenv-2023.7.11-fix-imports-pythonfinder.patch
@@ -8,10 +8,10 @@ Subject: [PATCH] pipenv-2023.7.11-fix-imports-pythonfinder.patch
  pipenv/help.py               | 2 +-
  pipenv/project.py            | 2 +-
  pipenv/utils/dependencies.py | 2 +-
- pipenv/utils/shell.py        | 3 ++-
+ pipenv/utils/shell.py        | 7 ++++---
  pipenv/utils/virtualenv.py   | 2 +-
  tests/unit/test_utils.py     | 2 +-
- 7 files changed, 9 insertions(+), 7 deletions(-)
+ 7 files changed, 11 insertions(+), 9 deletions(-)
 
 diff --git a/pipenv/environment.py b/pipenv/environment.py
 index 89f2aaf9e..1620b1ff8 100644
@@ -75,7 +75,7 @@ index 542a63f0d..396cdc034 100644
      if not path_to_python:
          return None
 diff --git a/pipenv/utils/shell.py b/pipenv/utils/shell.py
-index 89c6ef9bf..a07ebdddc 100644
+index 89c6ef9bf..e967360fe 100644
 --- a/pipenv/utils/shell.py
 +++ b/pipenv/utils/shell.py
 @@ -11,8 +11,9 @@ from contextlib import contextmanager
@@ -89,6 +89,24 @@ index 89c6ef9bf..a07ebdddc 100644
  from pipenv.vendor.requirementslib.fileutils import normalize_drive, normalize_path
  
  from .constants import FALSE_VALUES, SCHEME_LIST, TRUE_VALUES
+@@ -256,7 +257,7 @@ def find_python(finder, line=None):
+             return modified_line
+ 
+     if not finder:
+-        from pipenv.vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+ 
+         finder = Finder(global_search=True)
+     if not line:
+@@ -292,7 +293,7 @@ def is_python_command(line):
+     if not isinstance(line, str):
+         raise TypeError(f"Not a valid command to check: {line!r}")
+ 
+-    from pipenv.vendor.pythonfinder.utils import PYTHON_IMPLEMENTATIONS
++    from pythonfinder.utils import PYTHON_IMPLEMENTATIONS
+ 
+     is_version = re.match(r"\d+(\.\d+)*", line)
+     if (
 diff --git a/pipenv/utils/virtualenv.py b/pipenv/utils/virtualenv.py
 index a8e903944..8c9c654bc 100644
 --- a/pipenv/utils/virtualenv.py
