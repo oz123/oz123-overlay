@@ -30,17 +30,13 @@ RDEPEND="
 	dev-python/click[${PYTHON_USEDEP}]
 	dev-python/click-didyoumean[${PYTHON_USEDEP}]
 	>=dev-python/colorama-0.4.4[${PYTHON_USEDEP}]
-	dev-python/dparse[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
-	dev-python/pep517[${PYTHON_USEDEP}]
-	dev-python/pipdeptree[${PYTHON_USEDEP}]
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
 	>=dev-python/python-dateutil-2.8.2[${PYTHON_USEDEP}]
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
-	dev-python/pythonfinder[${PYTHON_USEDEP}]
 	>=dev-python/virtualenv-20.0.35[${PYTHON_USEDEP}]
 	dev-python/virtualenv-clone[${PYTHON_USEDEP}]
 	>=dev-python/requests-2.26.0[${PYTHON_USEDEP}]
@@ -69,9 +65,8 @@ distutils_enable_tests pytest
 src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
-	local packages=( cerberus colorama click click_didyoumean dotenv dparse \
-					 markupsafe pep517 pexpect pipdeptree ptyprocess pythonfinder \
-					 pyparsing requests urllib3 \
+	local packages=( cerberus colorama click_didyoumean dotenv markupsafe \
+					 pexpect ptyprocess pyparsing requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
