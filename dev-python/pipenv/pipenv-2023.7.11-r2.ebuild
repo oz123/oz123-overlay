@@ -113,6 +113,8 @@ src_prepare() {
 		rm -v pipenv/vendor/$fname || die "Failed removing pipenv/vendor/$fname"
 	done
 
+	rm -vR pipenv/vendor/pythonfinder || die "Failed removing pythonfinder from vendor"
+
 }
 
 python_test() {
