@@ -1,0 +1,89 @@
+diff --git a/pipenv/environment.py b/pipenv/environment.py
+index 89f2aaf9e..1620b1ff8 100644
+--- a/pipenv/environment.py
++++ b/pipenv/environment.py
+@@ -17,6 +17,8 @@ from urllib.request import url2pathname
+ import click
+ import pipenv
+ 
++from pythonfinder.utils import is_in_path
++
+ from pipenv.patched.pip._internal.commands.install import InstallCommand
+ from pipenv.patched.pip._internal.index.package_finder import PackageFinder
+ from pipenv.patched.pip._vendor import pkg_resources
+@@ -25,7 +27,6 @@ from pipenv.utils.funktools import chunked, unnest
+ from pipenv.utils.indexes import prepare_pip_source_args
+ from pipenv.utils.processes import subprocess_run
+ from pipenv.utils.shell import make_posix
+-from pipenv.vendor.pythonfinder.utils import is_in_path
+ from pipenv.vendor.requirementslib.fileutils import normalize_path, temp_path
+ from pipenv.vendor.requirementslib.utils import temp_environ
+ 
+diff --git a/pipenv/help.py b/pipenv/help.py
+index 12ff1479a..a9328baf6 100644
+--- a/pipenv/help.py
++++ b/pipenv/help.py
+@@ -3,8 +3,8 @@ import pprint
+ import sys
+ 
+ import pipenv
++import pythonfinder
+ from pipenv.pep508checker import lookup
+-from pipenv.vendor import pythonfinder
+ 
+ 
+ def get_pipenv_diagnostics(project):
+diff --git a/pipenv/project.py b/pipenv/project.py
+index e8714ef63..15432cd33 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -1133,7 +1133,7 @@ class Project:
+ 
+     @cached_property
+     def finders(self):
+-        from .vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+ 
+         scripts_dirname = "Scripts" if os.name == "nt" else "bin"
+         scripts_dir = os.path.join(self.virtualenv_location, scripts_dirname)
+diff --git a/pipenv/utils/dependencies.py b/pipenv/utils/dependencies.py
+index 542a63f0d..396cdc034 100644
+--- a/pipenv/utils/dependencies.py
++++ b/pipenv/utils/dependencies.py
+@@ -16,7 +16,7 @@ from .shell import temp_path
+ 
+ 
+ def python_version(path_to_python):
+-    from pipenv.vendor.pythonfinder.utils import get_python_version
++    from pythonfinder.utils import get_python_version
+ 
+     if not path_to_python:
+         return None
+diff --git a/pipenv/utils/shell.py b/pipenv/utils/shell.py
+index 89c6ef9bf..a07ebdddc 100644
+--- a/pipenv/utils/shell.py
++++ b/pipenv/utils/shell.py
+@@ -11,8 +11,9 @@ from contextlib import contextmanager
+ from functools import lru_cache
+ from pathlib import Path
+ 
++from pythonfinder.utils import ensure_path
++
+ from pipenv.vendor import click
+-from pipenv.vendor.pythonfinder.utils import ensure_path
+ from pipenv.vendor.requirementslib.fileutils import normalize_drive, normalize_path
+ 
+ from .constants import FALSE_VALUES, SCHEME_LIST, TRUE_VALUES
+diff --git a/pipenv/utils/virtualenv.py b/pipenv/utils/virtualenv.py
+index a8e903944..8c9c654bc 100644
+--- a/pipenv/utils/virtualenv.py
++++ b/pipenv/utils/virtualenv.py
+@@ -348,7 +348,7 @@ def find_a_system_python(line):
+     * Nothing fits, return None.
+     """
+ 
+-    from pipenv.vendor.pythonfinder import Finder
++    from pythonfinder import Finder
+ 
+     finder = Finder(system=False, global_search=True)
+     if not line:
