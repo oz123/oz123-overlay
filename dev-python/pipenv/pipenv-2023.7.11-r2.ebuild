@@ -71,7 +71,7 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click_didyoumean dotenv dparse markupsafe \
-					 pexpect pep517 pipdeptree ptyprocess pythonfinder pyparsing requests urllib3 \
+					 pexpect pep517 pipdeptree ptyprocess pyparsing requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
