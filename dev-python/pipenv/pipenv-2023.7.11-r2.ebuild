@@ -24,7 +24,6 @@ PATCHES=(
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports.patch"
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports-utils.patch"
 	"${FILESDIR}/pipenv-2023.7.11-fix-imports-pythonfinder.patch"
-	"${FILESDIR}/pipenv-2023.7.11-fix-monkeypatch-pythonfinder.patch"
 )
 
 RDEPEND="

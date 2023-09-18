@@ -1,3 +1,18 @@
+From 758570e88387fecd0b41700d27e92dfe05756f19 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Mon, 18 Sep 2023 12:05:59 +0200
+Subject: [PATCH] pipenv-2023.7.11-fix-imports-pythonfinder.patch
+
+---
+ pipenv/environment.py        | 3 ++-
+ pipenv/help.py               | 2 +-
+ pipenv/project.py            | 2 +-
+ pipenv/utils/dependencies.py | 2 +-
+ pipenv/utils/shell.py        | 3 ++-
+ pipenv/utils/virtualenv.py   | 2 +-
+ tests/unit/test_utils.py     | 2 +-
+ 7 files changed, 9 insertions(+), 7 deletions(-)
+
 diff --git a/pipenv/environment.py b/pipenv/environment.py
 index 89f2aaf9e..1620b1ff8 100644
 --- a/pipenv/environment.py
@@ -87,3 +102,19 @@ index a8e903944..8c9c654bc 100644
  
      finder = Finder(system=False, global_search=True)
      if not line:
+diff --git a/tests/unit/test_utils.py b/tests/unit/test_utils.py
+index c8a177e97..6e7779520 100644
+--- a/tests/unit/test_utils.py
++++ b/tests/unit/test_utils.py
+@@ -238,7 +238,7 @@ class TestUtils:
+     ):
+         def mock_version(path):
+             return version_output.split()[1]
+-        monkeypatch.setattr("pipenv.vendor.pythonfinder.utils.get_python_version", mock_version)
++        monkeypatch.setattr("pythonfinder.utils.get_python_version", mock_version)
+         assert dependencies.python_version("some/path") == version
+ 
+     @pytest.mark.utils
+-- 
+2.41.0
+
