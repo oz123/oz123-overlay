@@ -20,6 +20,10 @@ KEYWORDS="~amd64"
 
 distutils_enable_tests pytest
 
+PATCHES=(
+	"${FILESDIR}/2.0.3-fix-import-cached-property.patch"
+)
+
 RDEPEND="
 	<dev-python/pydantic-2[${PYTHON_USEDEP}]
 "
