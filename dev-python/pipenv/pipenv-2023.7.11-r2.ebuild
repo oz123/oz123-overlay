@@ -33,6 +33,7 @@ RDEPEND="
 	dev-python/dparse[${PYTHON_USEDEP}]
 	>=dev-python/markupsafe-2.0.1[${PYTHON_USEDEP}]
 	>=dev-python/pexpect-4.8.0[${PYTHON_USEDEP}]
+	dev-python/pep517[${PYTHON_USEDEP}]
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
@@ -67,7 +68,7 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click_didyoumean dotenv dparse markupsafe \
-					 pexpect ptyprocess pyparsing requests urllib3 \
+					 pexpect pep517 ptyprocess pyparsing requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
