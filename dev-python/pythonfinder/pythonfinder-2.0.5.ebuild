@@ -19,3 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 distutils_enable_tests pytest
+
+RDEPEND="
+	<dev-python/pydantic-2[${PYTHON_USEDEP}]
+"
+
