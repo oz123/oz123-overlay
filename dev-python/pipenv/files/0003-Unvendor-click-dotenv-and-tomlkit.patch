@@ -1,0 +1,43 @@
+From ee84b39f9fc24343633522259427f74227041294 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Wed, 20 Sep 2023 23:15:53 +0200
+Subject: [PATCH 3/4] Unvendor click, dotenv and tomlkit
+
+---
+ pipenv/environment.py       | 3 ++-
+ pipenv/utils/environment.py | 4 +++-
+ 2 files changed, 5 insertions(+), 2 deletions(-)
+
+diff --git a/pipenv/environment.py b/pipenv/environment.py
+index 26b42e66d..0eaf765cf 100644
+--- a/pipenv/environment.py
++++ b/pipenv/environment.py
+@@ -42,8 +42,9 @@ if typing.TYPE_CHECKING:
+     from types import ModuleType
+     from typing import ContextManager, Generator
+ 
++    import tomlkit
++
+     from pipenv.project import Project, TPipfile, TSource
+-    from pipenv.vendor import tomlkit
+ 
+ BASE_WORKING_SET = pkg_resources.WorkingSet(sys.path)
+ 
+diff --git a/pipenv/utils/environment.py b/pipenv/utils/environment.py
+index 89bba8eab..a0a2c0105 100644
+--- a/pipenv/utils/environment.py
++++ b/pipenv/utils/environment.py
+@@ -1,7 +1,9 @@
+ import os
+ 
++import click
++import dotenv
++
+ from pipenv import environments
+-from pipenv.vendor import click, dotenv
+ 
+ 
+ def load_dot_env(project, as_dict=False, quiet=False):
+-- 
+2.41.0
+

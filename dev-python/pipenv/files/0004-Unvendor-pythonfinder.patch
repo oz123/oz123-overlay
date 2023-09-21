@@ -1,0 +1,141 @@
+From d35086a8a2b61a2df1ef8ca018c065cd76cce351 Mon Sep 17 00:00:00 2001
+From: Oz Tiram <oz.tiram@gmail.com>
+Date: Wed, 20 Sep 2023 23:21:46 +0200
+Subject: [PATCH 4/4] Unvendor pythonfinder
+
+---
+ pipenv/environment.py        | 3 ++-
+ pipenv/help.py               | 3 ++-
+ pipenv/project.py            | 2 +-
+ pipenv/utils/dependencies.py | 2 +-
+ pipenv/utils/shell.py        | 7 ++++---
+ pipenv/utils/virtualenv.py   | 2 +-
+ tests/unit/test_utils.py     | 2 +-
+ 7 files changed, 12 insertions(+), 9 deletions(-)
+
+diff --git a/pipenv/environment.py b/pipenv/environment.py
+index 0eaf765cf..32bed397b 100644
+--- a/pipenv/environment.py
++++ b/pipenv/environment.py
+@@ -13,6 +13,8 @@ from pathlib import Path
+ from sysconfig import get_paths, get_python_version, get_scheme_names
+ from urllib.parse import urlparse
+ 
++from pythonfinder.utils import is_in_path
++
+ import pipenv
+ from pipenv.patched.pip._internal.commands.install import InstallCommand
+ from pipenv.patched.pip._internal.index.package_finder import PackageFinder
+@@ -28,7 +30,6 @@ from pipenv.utils.funktools import chunked, unnest
+ from pipenv.utils.indexes import prepare_pip_source_args
+ from pipenv.utils.processes import subprocess_run
+ from pipenv.utils.shell import make_posix, temp_environ
+-from pipenv.vendor.pythonfinder.utils import is_in_path
+ 
+ try:
+     # this is only in Python3.8 and later
+diff --git a/pipenv/help.py b/pipenv/help.py
+index 12ff1479a..d0fc6537a 100644
+--- a/pipenv/help.py
++++ b/pipenv/help.py
+@@ -2,9 +2,10 @@ import os
+ import pprint
+ import sys
+ 
++import pythonfinder
++
+ import pipenv
+ from pipenv.pep508checker import lookup
+-from pipenv.vendor import pythonfinder
+ 
+ 
+ def get_pipenv_diagnostics(project):
+diff --git a/pipenv/project.py b/pipenv/project.py
+index b96487c10..0a86dd664 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -1371,7 +1371,7 @@ class Project:
+ 
+     @cached_property
+     def finders(self):
+-        from .vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+ 
+         scripts_dirname = "Scripts" if os.name == "nt" else "bin"
+         scripts_dir = os.path.join(self.virtualenv_location, scripts_dirname)
+diff --git a/pipenv/utils/dependencies.py b/pipenv/utils/dependencies.py
+index d31d78ed9..903c2f5ec 100644
+--- a/pipenv/utils/dependencies.py
++++ b/pipenv/utils/dependencies.py
+@@ -68,7 +68,7 @@ def get_version(pipfile_entry):
+ 
+ 
+ def python_version(path_to_python):
+-    from pipenv.vendor.pythonfinder.utils import get_python_version
++    from pythonfinder.utils import get_python_version
+ 
+     if not path_to_python:
+         return None
+diff --git a/pipenv/utils/shell.py b/pipenv/utils/shell.py
+index dd7795aba..6417b008b 100644
+--- a/pipenv/utils/shell.py
++++ b/pipenv/utils/shell.py
+@@ -11,9 +11,10 @@ from contextlib import contextmanager
+ from functools import lru_cache
+ from pathlib import Path
+ 
++from pythonfinder.utils import ensure_path
++
+ from pipenv.utils.fileutils import normalize_drive, normalize_path
+ from pipenv.vendor import click
+-from pipenv.vendor.pythonfinder.utils import ensure_path
+ 
+ from .constants import FALSE_VALUES, SCHEME_LIST, TRUE_VALUES
+ from .processes import subprocess_run
+@@ -252,7 +253,7 @@ def find_python(finder, line=None):
+             return modified_line
+ 
+     if not finder:
+-        from pipenv.vendor.pythonfinder import Finder
++        from pythonfinder import Finder
+ 
+         finder = Finder(global_search=True)
+     if not line:
+@@ -288,7 +289,7 @@ def is_python_command(line):
+     if not isinstance(line, str):
+         raise TypeError(f"Not a valid command to check: {line!r}")
+ 
+-    from pipenv.vendor.pythonfinder.utils import PYTHON_IMPLEMENTATIONS
++    from pythonfinder.utils import PYTHON_IMPLEMENTATIONS
+ 
+     is_version = re.match(r"\d+(\.\d+)*", line)
+     if (
+diff --git a/pipenv/utils/virtualenv.py b/pipenv/utils/virtualenv.py
+index 562d4ccce..4bf4b8b45 100644
+--- a/pipenv/utils/virtualenv.py
++++ b/pipenv/utils/virtualenv.py
+@@ -345,7 +345,7 @@ def find_a_system_python(line):
+     * Nothing fits, return None.
+     """
+ 
+-    from pipenv.vendor.pythonfinder import Finder
++    from pythonfinder import Finder
+ 
+     finder = Finder(system=False, global_search=True)
+     if not line:
+diff --git a/tests/unit/test_utils.py b/tests/unit/test_utils.py
+index 3c63971d9..b0c1f8849 100644
+--- a/tests/unit/test_utils.py
++++ b/tests/unit/test_utils.py
+@@ -235,7 +235,7 @@ class TestUtils:
+     ):
+         def mock_version(path):
+             return version_output.split()[1]
+-        monkeypatch.setattr("pipenv.vendor.pythonfinder.utils.get_python_version", mock_version)
++        monkeypatch.setattr("pythonfinder.utils.get_python_version", mock_version)
+         assert dependencies.python_version("some/path") == version
+ 
+     @pytest.mark.utils
+-- 
+2.41.0
+
