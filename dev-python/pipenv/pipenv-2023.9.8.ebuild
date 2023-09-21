@@ -19,7 +19,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 PATCHES=(
-	"${FILESDIR}"/pipenv-2023-9-9-inject-system-packages.patch
+	"${FILESDIR}"/pipenv-2023-9-8-inject-system-packages.patch
 	"${FILESDIR}"/0002-Append-always-install-to-pip-extra-args.patch
 	"${FILESDIR}"/0003-Unvendor-click-dotenv-and-tomlkit.patch
 	"${FILESDIR}"/0004-Unvendor-pythonfinder.patch
