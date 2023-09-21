@@ -14,26 +14,29 @@ Subject: [PATCH 4/4] Unvendor pythonfinder
  7 files changed, 12 insertions(+), 9 deletions(-)
 
 diff --git a/pipenv/environment.py b/pipenv/environment.py
-index 0eaf765cf..32bed397b 100644
+index 26b42e66d..b0e4dd939 100644
 --- a/pipenv/environment.py
 +++ b/pipenv/environment.py
-@@ -13,6 +13,8 @@ from pathlib import Path
+@@ -13,7 +13,10 @@ from pathlib import Path
  from sysconfig import get_paths, get_python_version, get_scheme_names
  from urllib.parse import urlparse
- 
+
 +from pythonfinder.utils import is_in_path
 +
  import pipenv
++
  from pipenv.patched.pip._internal.commands.install import InstallCommand
  from pipenv.patched.pip._internal.index.package_finder import PackageFinder
-@@ -28,7 +30,6 @@ from pipenv.utils.funktools import chunked, unnest
+ from pipenv.patched.pip._internal.req.req_install import InstallRequirement
+@@ -28,7 +31,6 @@ from pipenv.utils.funktools import chunked, unnest
  from pipenv.utils.indexes import prepare_pip_source_args
  from pipenv.utils.processes import subprocess_run
  from pipenv.utils.shell import make_posix, temp_environ
 -from pipenv.vendor.pythonfinder.utils import is_in_path
- 
+
  try:
      # this is only in Python3.8 and later
+
 diff --git a/pipenv/help.py b/pipenv/help.py
 index 12ff1479a..d0fc6537a 100644
 --- a/pipenv/help.py
