@@ -35,6 +35,7 @@ RDEPEND="
 	dev-python/pipdeptree[${PYTHON_USEDEP}]
 	dev-python/plette[${PYTHON_USEDEP}]
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
+	<dev-python/pydantic-2.0.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	dev-python/pythonfinder[${PYTHON_USEDEP}]
 	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
@@ -71,8 +72,8 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click click_didyoumean dotenv dparse markupsafe \
-					 pexpect pep517 pipdeptree plette ptyprocess pyparsing pythonfinder requests urllib3 \
-					 shellingham tomli tomlkit )
+					 pexpect pep517 pipdeptree plette ptyprocess pydantic pyparsing pythonfinder \
+					 requests urllib3 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
 			xargs --max-procs="${jobs}" --null \
