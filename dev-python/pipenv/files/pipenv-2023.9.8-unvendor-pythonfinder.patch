@@ -86,33 +86,34 @@ index dd7795aba..6417b008b 100644
 @@ -11,9 +11,10 @@ from contextlib import contextmanager
  from functools import lru_cache
  from pathlib import Path
- 
+
 +from pythonfinder.utils import ensure_path
 +
  from pipenv.utils.fileutils import normalize_drive, normalize_path
  from pipenv.vendor import click
 -from pipenv.vendor.pythonfinder.utils import ensure_path
- 
+
  from .constants import FALSE_VALUES, SCHEME_LIST, TRUE_VALUES
  from .processes import subprocess_run
 @@ -252,7 +253,7 @@ def find_python(finder, line=None):
              return modified_line
- 
+
      if not finder:
 -        from pipenv.vendor.pythonfinder import Finder
 +        from pythonfinder import Finder
- 
+
          finder = Finder(global_search=True)
      if not line:
 @@ -288,7 +289,7 @@ def is_python_command(line):
      if not isinstance(line, str):
          raise TypeError(f"Not a valid command to check: {line!r}")
- 
+
 -    from pipenv.vendor.pythonfinder.utils import PYTHON_IMPLEMENTATIONS
 +    from pythonfinder.utils import PYTHON_IMPLEMENTATIONS
- 
+
      is_version = re.match(r"\d+(\.\d+)*", line)
      if (
+
 diff --git a/pipenv/utils/virtualenv.py b/pipenv/utils/virtualenv.py
 index 562d4ccce..4bf4b8b45 100644
 --- a/pipenv/utils/virtualenv.py
