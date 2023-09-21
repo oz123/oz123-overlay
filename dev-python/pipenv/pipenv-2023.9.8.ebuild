@@ -21,8 +21,6 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
-	"${FILESDIR}/pipenv-2023.9.8-unvendor-click-dotenv-tomlkit.patch"
-	"${FILESDIR}/pipenv-2023.9.8-unvendor-pythonfinder.patchpatch"
 )
 
 RDEPEND="
