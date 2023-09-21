@@ -11,6 +11,3 @@ index b96487c10..c8babd85a 100644
  
  try:
      # this is only in Python3.8 and later
-Submodule tests/pypi 2a840e043..f55300134 (rewind):
-  < Add setuptools 68.0.0 to the private pypi
-  < Add new setuptools to pypi fixtures.
