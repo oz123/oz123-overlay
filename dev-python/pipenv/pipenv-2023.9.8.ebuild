@@ -19,10 +19,8 @@ SLOT="0"
 KEYWORDS="~amd64"
 
 PATCHES=(
-	"${FILESDIR}"/pipenv-2023-9-8-inject-system-packages.patch
-	"${FILESDIR}"/0002-Append-always-install-to-pip-extra-args.patch
-	"${FILESDIR}"/0003-Unvendor-click-dotenv-and-tomlkit.patch
-	"${FILESDIR}"/0004-Unvendor-pythonfinder.patch
+	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
+	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
 )
 
 RDEPEND="
@@ -108,8 +106,8 @@ src_prepare() {
 
 	rm -vR pipenv/vendor/ruamel || die "Failed removing ruamel-yaml from vendor"
 
-	for fname in Makefile README.md README.rst ruamel.*.LICENSE vendor.txt; do
-		rm -v pipenv/vendor/$fname || die "Failed removing pipenv/vendor/$fname"
+	for fname in Makefile README.md ruamel.*.LICENSE vendor.txt; do
+		rm -v pipenv/vendor/$fname || die "Failed removing pipenv/vendor/${fname}"
 	done
 
 	rm -vR pipenv/vendor/pythonfinder || die "Failed removing pythonfinder from vendor"
