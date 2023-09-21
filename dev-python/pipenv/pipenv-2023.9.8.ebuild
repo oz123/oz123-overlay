@@ -21,7 +21,6 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
-	"${FILESDIR}/pipenv-2023.9.8-unvendor-pythonfinder-take-two.patch"
 )
 
 RDEPEND="
@@ -67,6 +66,7 @@ distutils_enable_tests pytest
 # see: https://bugs.gentoo.org/717666
 src_prepare() {
 	sed --in-place -e "s/import click, plette, tomlkit/import click\n\import tomlkit\nfrom pipenv.vendor import plette/g" pipenv/project.py || die "Failed patching pipenv/project.py"
+
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click click_didyoumean dotenv dparse markupsafe \
@@ -112,6 +112,7 @@ src_prepare() {
 		rm -v pipenv/vendor/$fname || die "Failed removing pipenv/vendor/${fname}"
 	done
 
+	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" tests/unit/test_utils.py || die "Failed patching tests"
 }
 
 python_test() {
