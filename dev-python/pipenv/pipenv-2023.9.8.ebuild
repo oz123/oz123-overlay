@@ -21,7 +21,6 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
-	"${FILESDIR}/pipenv-2023.9.8-fix-import-plette.patch"
 )
 
 RDEPEND="
@@ -66,6 +65,7 @@ distutils_enable_tests pytest
 # The vendored packages should eventually all be removed
 # see: https://bugs.gentoo.org/717666
 src_prepare() {
+	sed --in-place -e "s/import click, plette, tomlkit/import click\n\import tomlkit\nfrom pipenv.vendor import plette/g" pipenv/project.py || die "Failed patching pipenv/project.py"
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click click_didyoumean dotenv dparse markupsafe \
