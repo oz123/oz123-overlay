@@ -2,7 +2,7 @@ diff --git a/pipenv/project.py b/pipenv/project.py
 index b96487c10..c8babd85a 100644
 --- a/pipenv/project.py
 +++ b/pipenv/project.py
-@@ -69,7 +69,7 @@ from pipenv.utils.shell import (
+@@ -72,7 +72,7 @@ from pipenv.utils.shell import (
      system_which,
  )
  from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
