@@ -113,6 +113,8 @@ src_prepare() {
 	done
 
 	sed --in-place -e "s/pipenv.vendor.pythonfinder.utils.get_python_version/pythonfinder.utils.get_python_version/g" tests/unit/test_utils.py || die "Failed patching tests"
+
+	rm -Rfv examples || die "Could not remove examples"
 }
 
 python_test() {
