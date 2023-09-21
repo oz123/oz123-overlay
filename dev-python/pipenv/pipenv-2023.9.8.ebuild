@@ -21,7 +21,7 @@ KEYWORDS="~amd64"
 PATCHES=(
 	"${FILESDIR}/pipenv-2023.9.8-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-2023.9.8-append-always-install-to-pip-extra-args.patch"
-	"${FILESDIR}/pipenv-2023.9.8-unvendor-pythonfinder.patch"
+	"${FILESDIR}/pipenv-2023.9.8-fix-plette-import.patch"
 )
 
 RDEPEND="
@@ -69,7 +69,7 @@ src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
 	local packages=( cerberus colorama click click_didyoumean dotenv dparse markupsafe \
-					 pexpect pep517 pipdeptree ptyprocess pyparsing requests urllib3 \
+					 pexpect pep517 pipdeptree ptyprocess pyparsing pythonfinder requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
 		find ./ -type f -print0 | \
@@ -110,8 +110,6 @@ src_prepare() {
 	for fname in Makefile README.md ruamel.*.LICENSE vendor.txt; do
 		rm -v pipenv/vendor/$fname || die "Failed removing pipenv/vendor/${fname}"
 	done
-
-	rm -vR pipenv/vendor/pythonfinder || die "Failed removing pythonfinder from vendor"
 
 }
 
