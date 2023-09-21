@@ -68,7 +68,7 @@ distutils_enable_tests pytest
 src_prepare() {
 	local pkgName
 	local jobs=$(makeopts_jobs)
-	local packages=( cerberus colorama click_didyoumean dotenv dparse markupsafe \
+	local packages=( cerberus colorama click click_didyoumean dotenv dparse markupsafe \
 					 pexpect pep517 pipdeptree ptyprocess pyparsing requests urllib3 \
 					 shellingham tomli tomlkit )
 	for pkgName in ${packages[@]}; do
