@@ -1,11 +1,16 @@
---- pipenv/project.py	2023-09-21 15:31:46.232312766 +0200
-+++ pipenv/project.py   2023-09-21 15:45:28.072585902 +0200
-@@ -72,7 +72,7 @@
+diff --git a/pipenv/project.py b/pipenv/project.py
+index b96487c10..c8babd85a 100644
+--- a/pipenv/project.py
++++ b/pipenv/project.py
+@@ -69,7 +69,7 @@ from pipenv.utils.shell import (
      system_which,
  )
  from pipenv.utils.toml import cleanup_toml, convert_toml_outline_tables
--import click, plette, tomlkit
+-from pipenv.vendor import click, plette, tomlkit
 +from pipenv.vendor import plette
  
  try:
      # this is only in Python3.8 and later
+Submodule tests/pypi 2a840e043..f55300134 (rewind):
+  < Add setuptools 68.0.0 to the private pypi
+  < Add new setuptools to pypi fixtures.
