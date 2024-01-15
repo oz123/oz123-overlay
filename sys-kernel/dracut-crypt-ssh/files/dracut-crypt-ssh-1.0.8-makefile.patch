@@ -1,6 +1,8 @@
+diff --git a/modules/60crypt-ssh/helper/Makefile b/modules/60crypt-ssh/helper/Makefile
+index 9aa5003..b66a613 100644
 --- a/modules/60crypt-ssh/helper/Makefile
 +++ b/modules/60crypt-ssh/helper/Makefile
-@@ -17,10 +17,10 @@ clean:
+@@ -17,11 +17,11 @@ clean:
  	rm -f *.o console_auth unlock crypttab-test
  
  console_auth:	auth.c
@@ -12,4 +14,6 @@
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -lblkid -o $@
  
  crypttab-test: crypttab-test.c crypttab.o crypttab-test-data
- 	$(CC) crypttab-test.c $(CFLAGS) crypttab.o -lblkid -o crypttab-test
+-	$(CC) crypttab-test.c $(CFLAGS) crypttab.o -lblkid -o crypttab-test
++	$(CC) crypttab-test.c $(CFLAGS) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) crypttab.o -lblkid -o crypttab-test
+ 	./crypttab-test
