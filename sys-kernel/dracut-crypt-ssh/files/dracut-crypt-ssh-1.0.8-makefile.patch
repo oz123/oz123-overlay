@@ -1,6 +1,6 @@
 --- a/modules/60crypt-ssh/helper/Makefile
 +++ b/modules/60crypt-ssh/helper/Makefile
-@@ -17,7 +17,7 @@ clean:
+@@ -17,10 +17,10 @@ clean:
  	rm -f *.o console_auth unlock crypttab-test
  
  console_auth:	auth.c
@@ -8,4 +8,8 @@
 +	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o $@
  
  unlock:	crypttab.o unlock.o
- 	$(CC) $(CFLAGS) $^ -lblkid -o $@
+-	$(CC) $(CFLAGS) $^ -lblkid -o $@
++	$(CC) $(CFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -lblkid -o $@
+ 
+ crypttab-test: crypttab-test.c crypttab.o crypttab-test-data
+ 	$(CC) crypttab-test.c $(CFLAGS) crypttab.o -lblkid -o crypttab-test
