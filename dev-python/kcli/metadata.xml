@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person">
+	<name>Oz Tiram</name>
+	<email>oz.tiram@gmail.com</email>
+</maintainer>
+<maintainer type="project">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	A command line tool that provides a unified user experience
+	when interacting with multiple virtualization providers, such as:
+	Libvirt/Vsphere/Kubevirt/Aws/Azure/Gcp/Ibmcloud/oVirt/Openstack/Packet/Proxmox.
+</longdescription>
+<upstream>
+	<remote-id type="pypi">kcli</remote-id>
+</upstream>
+</pkgmetadata>
