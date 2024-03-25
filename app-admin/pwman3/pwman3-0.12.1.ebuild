@@ -14,8 +14,10 @@ SRC_URI="https://github.com/pwman3/pwman3/archive/v${PV}.tar.gz -> ${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64"
+IUSE="test"
 RESTRICT="!test? ( test )"
+
+KEYWORDS="~amd64"
 
 RDEPEND="
 	>=dev-python/cryptography-2.3[${PYTHON_USEDEP}]
@@ -23,10 +25,13 @@ RDEPEND="
 "
 BDEPEND="test? ( dev-python/pexpect[${PYTHON_USEDEP}] )"
 
-distutils_enable_tests setup.py
+python_test() {
+	python -m tests.test_pwman
+}
 
 pkg_postinst() {
 	optfeature "Support for mongodb" dev-python/pymongo
 	optfeature "Support for postgresql" dev-python/psycopg
 	optfeature "Support for mysql" dev-python/pymysql
 }
+
