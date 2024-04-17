@@ -7,7 +7,7 @@ inherit desktop wrapper xdg-utils
 
 DESCRIPTION="ICA Client for Citrix Presentation servers"
 HOMEPAGE="https://www.citrix.com/"
-SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )
+SRC_URI="amd64? ( linuxx64-${PV}.tar.gz )"
 
 LICENSE="icaclient"
 SLOT="0"
