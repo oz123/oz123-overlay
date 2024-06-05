@@ -22,7 +22,7 @@ RDEPEND="
 	x11-libs/gtk+
 	x11-libs/cairo
 	x11-libs/pango
-	>=dev-libs/openssl-3.0.13
+	dev-libs/openssl
 	"
 
 DEPEND=""
