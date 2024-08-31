@@ -73,4 +73,5 @@ src_configure() {
 
 pkg_postinst() {
 	optfeature "to enable webp support" gui-libs/gdk-pixbuf-loader-webp
+	optfeature "to enable foobar support" gui-libs/fooabr
 }
