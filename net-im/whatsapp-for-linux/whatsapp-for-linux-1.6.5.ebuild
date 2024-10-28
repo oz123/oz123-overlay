@@ -35,9 +35,7 @@ DEPEND="${RDEPEND}"
 
 BDEPEND="dev-util/intltool"
 
-#PATCHES=(
-#	"${FILESDIR}/${PN}-1.6.5-webkitgtk.patch"
-#)
+S="${WORKDIR}/WasIstLos-${PV}"
 
 src_prepare() {
 	cmake_src_prepare
