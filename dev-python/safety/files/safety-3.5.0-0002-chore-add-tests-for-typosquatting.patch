@@ -43,7 +43,7 @@ index 0000000..8890b77
 +            ("numppy", "numpy"),      # Extra 'p'
 +            ("pandaz", "pandas"),     # 'z' instead of 's'
 +            ("flazk", "flask"),       # 'z' instead of 's'
-+            ("boto", "boto3"),        # Missing '3'
++        #   ("boto", "boto3"),        # boto and boto3 are both valid
 +        ]
 +
 +        for typo, expected in test_cases:
@@ -73,7 +73,7 @@ index 0000000..8890b77
 +        self.assertTrue(is_valid)
 +        self.assertEqual(suggested, "")
 +
-+    @patch('safety.typosquatting.Prompt.ask')
++    @patch('safety.tool.typosquatting.Prompt.ask')
 +    def test_coerce_valid_package(self, mock_ask):
 +        """Test coercing a valid package name."""
 +        package_name = "requests"
@@ -83,7 +83,7 @@ index 0000000..8890b77
 +        mock_ask.assert_not_called()
 +        self.assertEqual(result, package_name)
 +
-+    @patch('safety.typosquatting.Prompt.ask')
++    @patch('safety.tool.typosquatting.Prompt.ask')
 +    def test_coerce_typosquatting_user_accepts(self, mock_ask):
 +        """Test coercing a typosquatting package name when user accepts the suggestion."""
 +        mock_ask.return_value = "y"
@@ -97,7 +97,7 @@ index 0000000..8890b77
 +        mock_ask.assert_called_once()
 +        self.assertEqual(result, expected)
 +
-+    @patch('safety.typosquatting.Prompt.ask')
++    @patch('safety.tool.typosquatting.Prompt.ask')
 +    def test_coerce_typosquatting_user_rejects(self, mock_ask):
 +        """Test coercing a typosquatting package name when user rejects the suggestion."""
 +        mock_ask.return_value = "n"
