@@ -7,11 +7,13 @@ PYTHON_COMPAT=( python3_1{1..3} )
 
 DISTUTILS_USE_PEP517="hatchling"
 
-inherit distutils-r1 pypi
+inherit distutils-r1
+
 
 DESCRIPTION="Scan dependencies for known vulnerabilities and licenses."
 
 HOMEPAGE="https://safetycli.com"
+SRC_URI="https://github.com/pyupio/safety/archive/refs/tags/${PV}.tar.gz -> ${P}.gh.tar.gz"
 LICENSE="MIT"
 SLOT="0"
 KEYWORDS="~amd64"
