@@ -1,20 +1,20 @@
-From f93eee940a0a2daa883f1e7b8d8235a2c4635c32 Mon Sep 17 00:00:00 2001
+From c797166dcccaec26cd68e2b13d8dd0572f63a359 Mon Sep 17 00:00:00 2001
 From: Oz Tiram <oz.tiram@gmail.com>
 Date: Thu, 8 May 2025 23:16:24 +0200
-Subject: [PATCH 2/2] chore: add tests for typorsquatting
+Subject: [PATCH] chore: add tests for typosquatting
 
 Signed-off-by: Oz Tiram <oz.tiram@gmail.com>
 ---
- tests/test_typosquatting.py | 93 +++++++++++++++++++++++++++++++++++++
- 1 file changed, 93 insertions(+)
+ tests/test_typosquatting.py | 92 +++++++++++++++++++++++++++++++++++++
+ 1 file changed, 92 insertions(+)
  create mode 100644 tests/test_typosquatting.py
 
 diff --git a/tests/test_typosquatting.py b/tests/test_typosquatting.py
 new file mode 100644
-index 0000000..8890b77
+index 0000000..4b3ac61
 --- /dev/null
 +++ b/tests/test_typosquatting.py
-@@ -0,0 +1,93 @@
+@@ -0,0 +1,92 @@
 +import unittest
 +from unittest.mock import patch, MagicMock
 +from typing import List, Tuple
@@ -43,12 +43,11 @@ index 0000000..8890b77
 +            ("numppy", "numpy"),      # Extra 'p'
 +            ("pandaz", "pandas"),     # 'z' instead of 's'
 +            ("flazk", "flask"),       # 'z' instead of 's'
-+        #   ("boto", "boto3"),        # boto and boto3 are both valid
 +        ]
 +
 +        for typo, expected in test_cases:
 +            is_valid, suggested = self.typosquatting.check_package(typo)
-+            self.assertFalse(is_valid)
++            assert not is_valid, f"Expected False for '{typo}'"
 +            self.assertEqual(suggested, expected)
 +
 +    def test_check_package_typosquatting_two_char_diff(self):
