@@ -9,7 +9,6 @@ DISTUTILS_USE_PEP517="hatchling"
 
 inherit distutils-r1
 
-
 DESCRIPTION="Scan dependencies for known vulnerabilities and licenses."
 
 HOMEPAGE="https://safetycli.com"
