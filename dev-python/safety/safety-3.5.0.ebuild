@@ -45,11 +45,7 @@ RDEPEND="
 
 BDEPEND="
 	test? (
-		=dev-python/pytest-8.3.4[${PYTHON_USEDEP}]
-		dev-python/commitizen[${PYTHON_USEDEP}]
-		dev-python/tomli[${PYTHON_USEDEP}]
-		dev-python/ruff[${PYTHON_USEDEP}]
-		dev-python/pyright[${PYTHON_USEDEP}]
+		>=dev-python/pytest-8.3.4[${PYTHON_USEDEP}]
 	)
 "
 distutils_enable_tests pytest
