@@ -36,7 +36,6 @@ RDEPEND="
 	>=dev-python/ptyprocess-0.7.0[${PYTHON_USEDEP}]
 	dev-python/pyparsing[${PYTHON_USEDEP}]
 	~dev-python/pythonfinder-3.0.0[${PYTHON_USEDEP}]
-	$(python_gen_cond_dep ' dev-python/tomli[${PYTHON_USEDEP}] ' python3_{9..10})
 	>=dev-python/python-dotenv-0.21.0[${PYTHON_USEDEP}]
 	>=dev-python/importlib-metadata-8.4.0[${PYTHON_USEDEP}]
 	<dev-python/importlib-metadata-9.0.0[${PYTHON_USEDEP}]
