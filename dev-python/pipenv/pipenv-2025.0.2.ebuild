@@ -6,7 +6,7 @@ EAPI=8
 DISTUTILS_USE_PEP517=setuptools
 PYTHON_COMPAT=( pypy3 python3_{10..13} )
 
-inherit distutils-r1 multiprocessing
+inherit distutils-r1 multiprocessing optfeature
 
 MY_PV=${PV/_beta/b}
 DESCRIPTION="Python Development Workflow for Humans"
