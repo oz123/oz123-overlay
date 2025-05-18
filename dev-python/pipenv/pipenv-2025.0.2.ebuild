@@ -23,6 +23,7 @@ KEYWORDS="~amd64 ~arm64 ~riscv"
 PATCHES=(
 	"${FILESDIR}/pipenv-${PV}-inject-system-packages.patch"
 	"${FILESDIR}/pipenv-${PV}-append-always-install-to-pip-extra-args.patch"
+	"${FILESDIR}/pipenv-${PV}-fix-graph-subcommand.patch"
 )
 
 RDEPEND="
