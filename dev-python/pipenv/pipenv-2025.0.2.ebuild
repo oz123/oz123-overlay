@@ -115,6 +115,6 @@ python_test() {
 }
 
 pkg_postinst() {
-	optfeature "Support for check subcommand" dev-python/safety
-	optfeature "Support for scan subcommand" dev-python/safety
+	optfeature "enabling the check subcommand" dev-python/safety
+	optfeature "enabling the scan subcommand" dev-python/safety
 }
