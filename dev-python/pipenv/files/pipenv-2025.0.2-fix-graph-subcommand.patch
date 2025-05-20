@@ -24,10 +24,12 @@ index cd85551f..583ba485 100644
          sys.exit(1)
 +    env = os.environ.copy()
 +    if "PYTHONPATH" in env:
-+        env["PYTHONPATH"] = env["PYTHONPATH"] + ":" + "/usr/lib/python3.12/site-packages/"
++        env["PYTHONPATH"] = (
++            f"{env['PYTHONPATH']}:/usr/lib/python{sys.version_info.major}"
++            f".{sys.version_info.minor}/site-packages/"
++        )
 +    else:
 +        env["PYTHONPATH"] = "/usr/lib/python3.12/site-packages/"
- 
 -    c = run_command(cmd_args, is_verbose=project.s.is_verbose())
 +    c = run_command(cmd_args, is_verbose=project.s.is_verbose(), env=env)
  
