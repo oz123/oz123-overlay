@@ -41,6 +41,11 @@ BDEPEND="
 	colord? ( x11-misc/colord[vala] )
 "
 
+PATCHES=(
+	# Add control for optional dependencies
+ 	"${FILESDIR}"/"${PV}"-add-control-optional-deps.patch
+)
+
 src_prepare() {
 	default
 	vala_setup
