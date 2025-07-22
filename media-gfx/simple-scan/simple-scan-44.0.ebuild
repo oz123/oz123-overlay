@@ -1,4 +1,4 @@
-# Copyright 1999-2025 Gentoo Authors
+# Copyright 1999-2023 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -7,17 +7,16 @@ inherit gnome.org gnome2-utils meson python-any-r1 vala xdg
 
 DESCRIPTION="Simple document scanning utility"
 HOMEPAGE="https://gitlab.gnome.org/GNOME/simple-scan"
-SRC_URI="https://gitlab.gnome.org/GNOME/simple-scan/-/archive/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-3+"
 SLOT="0"
-KEYWORDS="~amd64 ~arm ~arm64 ppc ppc64 ~riscv ~x86"
+KEYWORDS="amd64 ~arm ~arm64 ppc ppc64 ~riscv x86"
 IUSE="colord webp"
 
 DEPEND="
 	>=dev-libs/glib-2.38:2
-	>=gui-libs/gtk-4.10.0:4
-	>=gui-libs/libadwaita-1.2.0:1
+	>=x11-libs/gtk+-3.24:3
+	>=gui-libs/libhandy-1.6.0:1
 	>=sys-libs/zlib-1.2.3.1:=
 	x11-libs/cairo
 	x11-libs/gdk-pixbuf:2
@@ -36,14 +35,14 @@ BDEPEND="
 	dev-util/itstool
 	>=sys-devel/gettext-0.19.8
 	virtual/pkgconfig
-	gui-libs/libadwaita:1[vala]
+	gui-libs/libhandy:1[vala]
 	dev-libs/libgusb[vala]
 	colord? ( x11-misc/colord[vala] )
 "
 
 PATCHES=(
 	# Add control for optional dependencies
- 	"${FILESDIR}"/"${PV}"-add-control-optional-deps.patch
+	"${FILESDIR}"/44.0-add-control-optional-deps.patch
 )
 
 src_prepare() {
