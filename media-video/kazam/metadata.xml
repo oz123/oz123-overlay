@@ -1,0 +1,27 @@
+</pkgmetadata>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person" proxied="yes">
+		<email>oz.tiram@gmail.com</email>
+		<name>Oz Tiram</name>
+	</maintainer>
+	<maintainer type="project" proxied="proxy">
+		<email>proxy-maint@gentoo.org</email>
+		<name>Proxy Maintainers</name>
+	</maintainer>
+	<longdescription>
+		Kazam is a simple screen recording program that will capture the content
+		of your screen and record a video file that can be played by any video player
+		that supports VP8/WebM video format. Kazam has been designed with simplicity
+		in mind and provides a clean, intuitive interface. It can record the entire
+		desktop or just a selected area, and includes audio recording capabilities.
+
+		This version (Kazam2) includes enhanced features like OCR (Optical Character
+		Recognition), AI integration, broadcasting capabilities, and improved capture
+		functionality compared to the original Kazam.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">henrywoo/kazam</remote-id>
+	</upstream>
+</pkgmetadata>
