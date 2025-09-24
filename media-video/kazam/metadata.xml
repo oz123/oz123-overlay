@@ -21,6 +21,12 @@
 		Recognition), AI integration, broadcasting capabilities, and improved capture
 		functionality compared to the original Kazam.
 	</longdescription>
+	<use>
+		<flag name="ocr">
+			Enable optical character recognition (OCR) features using Tesseract
+			for text extraction from captured screen content
+		</flag>
+	</use>
 	<upstream>
 		<remote-id type="github">henrywoo/kazam</remote-id>
 	</upstream>
