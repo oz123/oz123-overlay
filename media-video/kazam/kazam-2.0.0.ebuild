@@ -39,7 +39,7 @@ RDEPEND="
 "
 
 BDEPEND="
-	dev-python/distutils-extra[${PYTHON_USEDEP}]
+	dev-python/python-distutils-extra[${PYTHON_USEDEP}]
 	sys-devel/cmake
 "
 
