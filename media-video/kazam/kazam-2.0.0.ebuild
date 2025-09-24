@@ -49,13 +49,21 @@ python_prepare() {
 	# Remove hiq dependency
 	sed -i '/^hiq-python$/d' requirements.txt || die
 	sed -i '/^import hiq$/d' setup.py || die
-	distutils-r1_python_prepare
+
+	# Create kazam/data directory if it doesn't exist
+	mkdir -p kazam/data || die
+	touch kazam/data/__init__.py || die
+
+	# Fix package structure in setup.py if needed
+	sed -i "s/'kazam.data',//" setup.py || die "Failed to remove kazam.data package"
+
+	distutils-r1_python_prepare_all
 }
 
 python_install_all() {
 	distutils-r1_python_install_all
 
-	# Install desktop file and icons
+	# Install desktop file
 	if [[ -f data/kazam.desktop ]]; then
 		domenu data/kazam.desktop
 	fi
@@ -64,6 +72,18 @@ python_install_all() {
 	if [[ -d data/icons/scalable ]]; then
 		insinto /usr/share/icons/hicolor/scalable/apps
 		doins data/icons/scalable/*.svg
+	fi
+
+	# Install UI files
+	if [[ -d data/ui ]]; then
+		insinto /usr/share/kazam/ui
+		doins data/ui/*.ui
+	fi
+
+	# Install sound files
+	if [[ -d data/sounds ]]; then
+		insinto /usr/share/kazam/sounds
+		doins data/sounds/*.ogg
 	fi
 }
 
