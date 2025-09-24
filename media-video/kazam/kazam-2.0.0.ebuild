@@ -46,12 +46,9 @@ BDEPEND="
 DEPEND="${RDEPEND}"
 
 python_prepare() {
-	# Remove hiq dependency if pulseaudio USE flag is not set
-	if ! use pulseaudio; then
-			sed -i '/^hiq-python$/d' requirements.txt || die
-			sed -i '/^import hiq$/d' setup.py || die
-	fi
-
+	# Remove hiq dependency
+	sed -i '/^hiq-python$/d' requirements.txt || die
+	sed -i '/^import hiq$/d' setup.py || die
 	distutils-r1_python_prepare
 }
 
