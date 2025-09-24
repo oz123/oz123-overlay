@@ -45,7 +45,7 @@ BDEPEND="
 
 DEPEND="${RDEPEND}"
 
-python_prepare() {
+python_prepare_all() {
 	# Remove hiq dependency
 	sed -i '/^hiq-python$/d' requirements.txt || die
 	sed -i '/^import hiq$/d' setup.py || die
