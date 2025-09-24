@@ -30,7 +30,7 @@ RDEPEND="
 	media-libs/gst-plugins-good:1.0
 	media-plugins/gst-plugins-pulse
 	media-sound/pulseaudio
-	x11-apps/xdotool
+	x11-misc/xdotool
 	ocr? (
 		app-text/tesseract
 		dev-python/pillow[${PYTHON_USEDEP}]
