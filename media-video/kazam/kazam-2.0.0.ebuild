@@ -57,6 +57,9 @@ python_prepare_all() {
 	# Fix package structure in setup.py if needed
 	sed -i "s/'kazam.data',//" setup.py || die "Failed to remove kazam.data package"
 
+	# Fix datadir path construction in bin/kazam for python-exec compatibility
+	sed -i 's|datadir = curpath.split.*|datadir = "/usr/share/kazam/"|' bin/kazam || die
+
 	distutils-r1_python_prepare_all
 }
 
