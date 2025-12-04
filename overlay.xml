@@ -2,7 +2,7 @@
  
 <repositories version="1.0">
 	<repo priority="50" quality="experimental" status="unofficial">
-		<name>larry</name>
+		<name>oz123-overlay</name>
 		<description>Oz Nahum Tiram Private overlay, use with caution</description>
 		<homepage>https://github.com/oz123/oz123-overlay</homepage>
 		<owner>
