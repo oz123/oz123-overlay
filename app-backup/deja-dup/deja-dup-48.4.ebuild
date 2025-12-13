@@ -12,7 +12,7 @@ SRC_URI="https://gitlab.gnome.org/World/deja-dup/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test restic duplicity"
+IUSE="test +restic duplicity"
 REQUIRED_USE="|| ( restic duplicity )"
 RESTRICT="!test? ( test )"
 
