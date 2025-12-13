@@ -1,0 +1,3 @@
+media-video/vlc x264 x265 ogg mp3 srt libass gstreamer
+# needed for deja-dup
+>=gnome-base/gvfs-1.56.1-r2 fuse
