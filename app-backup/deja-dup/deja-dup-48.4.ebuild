@@ -12,8 +12,10 @@ SRC_URI="https://gitlab.gnome.org/World/deja-dup/-/archive/${PV}/${P}.tar.bz2"
 LICENSE="GPL-3+"
 SLOT="0"
 KEYWORDS="~amd64"
-IUSE="test restic"
+IUSE="test restic duplicity"
+REQUIRED_USE="|| ( restic duplicity )"
 RESTRICT="!test? ( test )"
+
 
 BDEPEND="
 	$(vala_depend)
@@ -32,8 +34,8 @@ DEPEND="
 	>=dev-libs/glib-2.64:2[dbus]
 	>=app-crypt/libsecret-0.18.6[vala]
 	>=net-libs/libsoup-3.0:3.0
-	>=app-backup/duplicity-0.8.21
 	restic? ( app-backup/restic )
+	duplicity? (>=app-backup/duplicity-0.8.21)
 "
 
 RDEPEND="${DEPEND}

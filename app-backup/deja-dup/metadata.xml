@@ -30,5 +30,6 @@
 	</upstream>
 	<use>
 		<flag name="restic">Enable backups with <pkg>app-backup/restic</pkg></flag>
+		<flag name="duplicity">Enable backups with <pkg>app-backup/duplicity</pkg></flag>
 	</use>
 </pkgmetadata>
