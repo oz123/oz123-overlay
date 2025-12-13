@@ -34,7 +34,7 @@ DEPEND="
 	>=app-crypt/libsecret-0.18.6[vala]
 	>=net-libs/libsoup-3.0:3.0
 	restic? ( app-backup/restic )
-	duplicity? (>=app-backup/duplicity-0.8.21 )
+	duplicity? ( app-backup/duplicity )
 "
 
 RDEPEND="${DEPEND}
