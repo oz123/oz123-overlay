@@ -1,3 +1,7 @@
 media-video/vlc x264 x265 ogg mp3 srt libass gstreamer
 # needed for deja-dup
 >=gnome-base/gvfs-1.56.1-r2 fuse
+
+# vlc with proper subtitles reading
+media-video/vlc udev x264 srt libnotify a52 alsa dbus encode ffmpeg flac gcrypt gui jpeg mad mpeg aom bidi cddb dav1d debug faad fontconfig gstreamer matroska sftp truetype libass
+#media-video/ffmpeg vpx theora libass
