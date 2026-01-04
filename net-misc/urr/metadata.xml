@@ -1,0 +1,27 @@
+</pkgmetadata>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+<maintainer type="person" proxied="yes">
+	<name>Oz Tiram</name>
+	<email>oz.tiram@gmail.com</email>
+</maintainer>
+<maintainer type="project" proxied="proxy">
+	<email>proxy-maint@gentoo.org</email>
+	<name>Proxy Maintainers</name>
+</maintainer>
+<longdescription lang="en">
+	urr is a lightweight, dependency-free Wake-on-LAN (WoL) utility written in C.
+	Unlike simple WoL tools, urr allows you to manage a database of machines, letting you wake them up using friendly hostnames instead of memorizing 17-character MAC addresses.
+
+The name urr comes from the Hebrew imperative עוּר, meaning "wake up!" or "arise!".
+</longdescription>
+<upstream>
+	<remote-id type="github">janet-lang/janet</remote-id>
+</upstream>
+<use>
+	<flag name="static-libs">install janet static library archive,
+		you must enable this flag for using `jpm build`
+	</flag>
+</use>
+</pkgmetadata>
