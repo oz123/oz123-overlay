@@ -19,6 +19,10 @@ ICAROOT="/opt/Citrix/ICAClient"
 
 QA_PREBUILT="${ICAROOT#/}/*"
 
+QA_FLAGS_IGNORED="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_TEXTRELS="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+QA_RUNPATH="${ICAROOT#/}/lib/HdxRtcEngine_ext/libwebrpc.so"
+
 # we have binaries for two conflicting kerberos implementations
 # https://bugs.gentoo.org/792090
 # https://bugs.gentoo.org/775995
@@ -38,12 +42,17 @@ REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
 	libgstpbutils-0.10.so.0
 	libgstreamer-0.10.so.0
 "
-
-# video background blurring, optional
+# video background blurring + webkit dependencies, optional
 REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
-	libopencv_core.so.407
-	libopencv_imgcodecs.so.407
-	libopencv_imgproc.so.407
+	libopencv_core.so.410
+	libopencv_imgcodecs.so.410
+	libopencv_imgproc.so.410
+	libwebkit2gtk-4.0.so.37
+	libjavascriptcoregtk-4.0.so.18
+"
+# smartcard support, optional
+REQUIRES_EXCLUDE="${REQUIRES_EXCLUDE}
+	libpcsclite.so.1
 "
 
 BDEPEND="
